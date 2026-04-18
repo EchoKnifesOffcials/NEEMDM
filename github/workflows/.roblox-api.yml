@@ -1,0 +1,23 @@
+name: Run Roblox API Server
+
+on:
+  workflow_dispatch:  # Adds a "Run workflow" button on GitHub
+
+jobs:
+  run-api:
+    runs-on: ubuntu-latest  # Free 2-core, 7GB RAM machine
+    
+    steps:
+      - name: Checkout your code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Start your server
+        run: node server.js
